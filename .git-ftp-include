@@ -1,1 +1,3 @@
-dist/videoflix-frontend/*
+# .git-ftp-include
+/dist/*
+!/dist/
