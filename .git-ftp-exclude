@@ -1,5 +1,0 @@
-# Exclude the 'dist' directory
-dist/
-
-# Include all files and subdirectories inside the 'dist' directory
-!dist/**
