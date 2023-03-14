@@ -3,11 +3,12 @@
 
 
     <form class="login-form">
-        <input placeholder="E-Mail-Adresse">
-        <input placeholder="Passwort">
-        <button (click)="tryLogin()">Einloggen</button>
-        <button (click)="goToRegister()">Registrieren</button>
+        <input class="login-margin-bottom" [(ngModel)]="email" name="email" type="text" placeholder="E-Mail-Adresse">
+        <input class="login-margin-bottom" [(ngModel)]="password" name="password" type="text" placeholder="Passwort">
+        <button class="login-margin-bottom" (click)="login()">Einloggen</button>
+        <button class="login-margin-bottom" (click)="register()">Registrieren</button>
     </form>
+
 
 </div>
 <app-footer></app-footer>
