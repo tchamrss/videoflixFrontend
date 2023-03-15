@@ -1,1 +1,2 @@
-!./dist/videoflix-frontend/
+videoflix-frontend/*
+!videoflix-frontend
