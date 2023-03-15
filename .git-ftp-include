@@ -1,1 +1,2 @@
-videoflix-frontend/:videoflix-frontend
+!./dist/videoflix-frontend/
+
