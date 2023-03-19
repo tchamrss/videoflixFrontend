@@ -11,27 +11,29 @@ import { ServerRequestService } from '../services/server-request.service';
 })
 export class LoginComponent implements OnInit {
   
-  @Input() userDetails = { email: '', password: '', password2: '', token: '' };
+  email ='';
+  password='';
   
   constructor(private router: Router, private servReqService: ServerRequestService) { }
 
   ngOnInit(): void {
   }
 
-    loginUser(dataForUser: any) {
+    loginUser() {
        console.log('POST-Request to Backend with Login Data');
-       console.log('E-Mail: ',this.userDetails.email);  
-       console.log('Password: ',this.userDetails.password);
-       console.log('Password2: ',this.userDetails.password2);
-       console.log('Token: ',this.userDetails.token);     
-       console.log('WICHTIG: Wenn Länge des ersten PWS > 0 und Länge von PW2 == 0, DANN ist es ein Loginversuch'); 
-       console.log('User: ',this.userDetails);
-       let loginData = {username: 'tullrich', password: 'tullrich'}; // this.userDetails durch loginData ersetzt
+       //console.log('E-Mail: ',this.email);  
+       //console.log('Password: ',this.password);
+ 
+      let loginData = {username: this.email, password: this.password};
+      console.log(loginData);
 
       this.servReqService.loginUser(loginData).subscribe((data: {}) => {
         //this.router.navigate(['/employees-list']);
         console.log(data);
+
+        //localStorage.setItem('token', json.token);
         console.log('Save the Token of the User for further Requests');
+       //localStorage.setItem('token',resp['token']); //token in den LocalStorage schreiben
         console.log('Go to Video-Site');
         //this.router.navigateByUrl('/videos');  
       });
@@ -42,20 +44,5 @@ export class LoginComponent implements OnInit {
   }
 
 
-  getUsers(){
-
-  }
-  getUser(id: number){
-
-  }
-  createUser(){
-
-  }
-  updateUser(id: number){
-
-  }
-  deleteUser(id: number){
-
-  }
 
 }

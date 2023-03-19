@@ -9,20 +9,15 @@ import { ServerRequestService } from '../services/server-request.service';
 })
 export class VideosComponent implements OnInit {
   
-  @Input() userDetails = { email: '', password: '', password2: '', token: '' };
+  videos = [];
 
   constructor(private router: Router, private servReqService: ServerRequestService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
    console.log('HIER');
-  }
+   console.log('GET-Request to Backend for Videos');
 
-
-  logoutUser(){
-    console.log('GET-Request to Backend for Videos');
-    console.log('WICHTIG: Wenn nur Länge token != 0, DANN ist es ein GET-Video-Request'); 
-
-   this.servReqService.getVideos(this.userDetails).subscribe((data: {}) => {
+   this.servReqService.getVideos().subscribe((data: {}) => {
      //this.router.navigate(['/employees-list']);
      console.log(data);
      console.log('Delete the Token of the User!');
@@ -30,10 +25,17 @@ export class VideosComponent implements OnInit {
      //this.router.navigateByUrl('/logout');  
    });
 
+  }
 
 
-    console.log('Go to Logout-Site');
-    this.router.navigateByUrl('/logout'); 
+  async loadPoke(){
+    try{
+      let resp = await this.servReqService.getPokemons();
+      console.log('Answer: ',resp);
+    }
+    catch (e){
+      console.log('Error: ',e);
+    }
   }
 
 

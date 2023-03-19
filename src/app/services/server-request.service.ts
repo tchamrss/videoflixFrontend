@@ -1,7 +1,8 @@
 import { HttpClient, HttpHeaders } from  '@angular/common/http';
 import { Injectable } from  '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { lastValueFrom, Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { User } from '../shared/user';
 import { Video } from '../shared/video';
 
@@ -13,7 +14,9 @@ import { Video } from '../shared/video';
 export class ServerRequestService {
 
 //Define API
-APIurl = 'https://tullrich.pythonanywhere.com';
+APIurl = environment.baseUrl;
+
+
 
 constructor(private https: HttpClient) { }
 
@@ -28,13 +31,23 @@ httpOptions = {
   }),
 };
 
+//GET Pokemons form API
+getPokemons(){
+ const url ='https://pokeapi.co/api/v2/pokemon?limit=11&offset=0';
+ let headers = new HttpHeaders();
+ headers = headers.set('Authorization','Token ' + localStorage.getItem('token'));
+ console.log(localStorage.getItem('token'));
+ return lastValueFrom(this.https.get(url,{headers: headers}));
+}
+
+
 
 // HttpClient API post() method => Login User
 loginUser(user: any): Observable<User> {
   return this.https
     .post<User>(
-      this.APIurl + '/login',
-      JSON.stringify(user),
+      this.APIurl + '/login/', //1.Param: URL
+      JSON.stringify(user), //2.Param: Body
       this.httpOptions
     )
     .pipe(retry(1), catchError(this.handleError));
@@ -64,7 +77,7 @@ logoutUser(user: any): Observable<User> {
 }
 
 // HttpClient API get() method => Fetch Videos
-getVideos(user: any): Observable<Video> {
+getVideos(): Observable<Video> {
   return this.https
     .get<Video>(this.APIurl + '/videos')
     .pipe(retry(1), catchError(this.handleError));

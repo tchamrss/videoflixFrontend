@@ -1,18 +1,11 @@
 <app-header></app-header>
 <div class="login-container">
 
-
-    <form class="login-form">
-        <input class="login-margin-bottom" [(ngModel)]="userDetails.email" name="email" type="text" placeholder="E-Mail-Adresse">
-        <input class="login-margin-bottom" [(ngModel)]="userDetails.password" name="password" type="text" placeholder="Passwort">
-        <button class="login-margin-bottom" (click)="loginUser(userDetails)">Einloggen</button>
+    <form (ngSubmit)="loginUser()" class="login-form">
+        <input class="login-margin-bottom" [(ngModel)]="email" name="email" type="text" placeholder="E-Mail">
+        <input class="login-margin-bottom" [(ngModel)]="password" name="password" type="text" placeholder="Password">
+        <button class="login-margin-bottom">Einloggen</button>
         <button class="login-margin-bottom" (click)="goToRegister()">Registrieren</button>
-        <div>platz</div>
-        <button class="login-margin-bottom" (click)="getUsers()">GET Users</button>
-        <button class="login-margin-bottom" (click)="getUser(1)">GET User with id=1</button>
-        <button class="login-margin-bottom" (click)="createUser()">CREATE User</button>
-        <button class="login-margin-bottom" (click)="updateUser(1)">UPDATE User with id=1</button>
-        <button class="login-margin-bottom" (click)="deleteUser(2)">DELETE User with id=2</button>
     </form>
 
 </div>
