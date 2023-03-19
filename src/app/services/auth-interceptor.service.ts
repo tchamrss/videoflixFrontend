@@ -25,7 +25,7 @@ export class AuthInterceptorService implements HttpInterceptor {
         setHeaders: {Authorization: `Token ${token}`}
      });
   }
-  console.log(localStorage.getItem('token'));
+  console.log('Token vom Interceptor angehängt: ',localStorage.getItem('token'));
   //Wir geben unseren Request in
   return next.handle(request).pipe(
   	catchError((err) => {

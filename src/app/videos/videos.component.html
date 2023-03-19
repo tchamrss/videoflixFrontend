@@ -1,7 +1,18 @@
 <app-header></app-header>
 <div class="videos-container">
     <p>videos works!</p>
-    <div>Test ftp up111</div>
-    <button class="login-margin-bottom" (click)="loadPoke()">Pokeload</button>
+    <div *ngFor="let video of videos">Test ftp up111
+    <div>{{ video.id}}</div>
+    <div>{{ video.title}}</div>
+    <div>{{ video.description}}</div>
+    <div>{{ video.playtime}}</div>
+    <div>{{ video.genres}}</div>
+    <div>{{ video.likes}}</div>
+    <div>{{ video.picture}}</div>
+    <div>{{ video.date}}</div>
+    <div>{{ video.videofile}}</div>
+    <button class="login-margin-bottom" (click)="changeVideo(video.id)">Like</button>
+    </div>
+    
 </div>
 <app-footer></app-footer>

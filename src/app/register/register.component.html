@@ -1,9 +1,10 @@
 <app-header></app-header>
 <div class="register-container">
     <p>register works!</p>
-    <input [(ngModel)]="userDetails.email" placeholder="email">
-    <input [(ngModel)]="userDetails.password" placeholder="password">
-    <input [(ngModel)]="userDetails.password2" placeholder="password">
-    <button (click)="registerUser(userDetails)">Loslegen</button>
+    <input [(ngModel)]="username" placeholder="username">
+    <input [(ngModel)]="email" placeholder="email">
+    <input [(ngModel)]="password" placeholder="password">
+    <input [(ngModel)]="password2" placeholder="password">
+    <button (click)="registerUser()">Loslegen</button>
 </div>
 <app-footer></app-footer>

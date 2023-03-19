@@ -20,22 +20,16 @@ export class LoginComponent implements OnInit {
   }
 
     loginUser() {
-       console.log('POST-Request to Backend with Login Data');
-       //console.log('E-Mail: ',this.email);  
-       //console.log('Password: ',this.password);
- 
-      let loginData = {username: this.email, password: this.password};
-      console.log(loginData);
+      let loginData = {username: this.email, email: this.email, password: this.password};
+      console.log('POST-Request to Backend with Login Data: ',loginData);
 
       this.servReqService.loginUser(loginData).subscribe((data: {}) => {
-        //this.router.navigate(['/employees-list']);
         console.log(data);
-
-        //localStorage.setItem('token', json.token);
-        console.log('Save the Token of the User for further Requests');
-       //localStorage.setItem('token',resp['token']); //token in den LocalStorage schreiben
+        let response: any = data;
+        localStorage.setItem('token', response['token']);
+        console.log('Token gespeichert: ', response['token']);
         console.log('Go to Video-Site');
-        //this.router.navigateByUrl('/videos');  
+        this.router.navigateByUrl('/videos');  
       });
     }
 

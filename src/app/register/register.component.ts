@@ -7,30 +7,30 @@ import { ServerRequestService } from '../services/server-request.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
+
 export class RegisterComponent implements OnInit {
-  @Input() userDetails = { email: '', password: '', password2: '', token: '' };
+  username: string = '';
+  email: string = ''; 
+  password: string = '';
+  password2: string = '';
 
   constructor(private router: Router, private servReqService: ServerRequestService) { }
 
   ngOnInit(): void {
   }
 
-  registerUser(dataForUser: any){
-    console.log('POST-Request to Backend with Register Data');
-    console.log('E-Mail: ',this.userDetails.email);  
-    console.log('Password: ',this.userDetails.password);
-    console.log('Password2: ',this.userDetails.password2);
-    console.log('Token: ',this.userDetails.token);
-    console.log('WICHTIG: Wenn Länge von PW2 > 0, DANN ist es ein Registrierungsversuch');      
+  registerUser(){
+    let registerData = {username: this.email, email: this.email, password: this.password};
+    console.log('POST-Request to Backend with Login Data: ',registerData);
 
 
-   if(this.userDetails.password == this.userDetails.password2){
-    this.servReqService.createUser(this.userDetails).subscribe((data: {}) => {
-      //this.router.navigate(['/employees-list']);
+   if(this.password == this.password2){
+    this.servReqService.registerUser(registerData).subscribe((data: {}) => {
       console.log(data);
-      console.log('Registration successful!');
+      let response: any = data;
+      console.log('Registration successful! ',response);
       console.log('Go to Login-Site');
-      //this.router.navigateByUrl('/login');  
+      this.router.navigateByUrl('/login');  
     });
    } 
    else{
