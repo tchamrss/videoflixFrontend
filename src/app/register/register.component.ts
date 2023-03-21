@@ -20,7 +20,7 @@ export class RegisterComponent implements OnInit {
   }
 
   registerUser(){
-    let registerData = {username: this.email, email: this.email, password: this.password};
+    let registerData = {username: this.username, email: this.email, password: this.password};
     console.log('POST-Request to Backend with Login Data: ',registerData);
 
 

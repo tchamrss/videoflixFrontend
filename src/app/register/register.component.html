@@ -1,10 +1,22 @@
 <app-header></app-header>
 <div class="register-container">
-    <p>register works!</p>
-    <input [(ngModel)]="username" placeholder="username">
-    <input [(ngModel)]="email" placeholder="email">
-    <input [(ngModel)]="password" placeholder="password">
-    <input [(ngModel)]="password2" placeholder="password">
-    <button (click)="registerUser()">Loslegen</button>
+    
+    <div class="register-text">
+    <h1>Unlimited movies, TV shows, and more.</h1>
+    <div>Watch anywhere. Cancel anytime.</div>
+    <div>Ready to watch? Enter your email to create or restart your membership.</div>
+    </div>
+
+    <form (ngSubmit)="registerUser()" class="register-form">
+    <input class="register-margin-bottom" [(ngModel)]="username" name="username" placeholder="username">
+    <input class="register-margin-bottom" [(ngModel)]="email" name="email" placeholder="email">
+    <input class="register-margin-bottom" [(ngModel)]="password" name="password" placeholder="password">
+    <input class="register-margin-bottom" [(ngModel)]="password2" name="password2" placeholder="password">
+    <button>Get Started</button>
+    </form>
 </div>
 <app-footer></app-footer>
+
+
+
+

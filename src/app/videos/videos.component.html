@@ -1,7 +1,7 @@
 <app-header></app-header>
 <div class="videos-container">
     <p>videos works!</p>
-    <div *ngFor="let video of videos">Test ftp up111
+  <div *ngFor="let video of videos" class="videos-box">
     <div>{{ video.id}}</div>
     <div>{{ video.title}}</div>
     <div>{{ video.description}}</div>
@@ -9,10 +9,11 @@
     <div>{{ video.genres}}</div>
     <div>{{ video.likes}}</div>
     <div>{{ video.picture}}</div>
-    <div>{{ video.date}}</div>
-    <div>{{ video.videofile}}</div>
+    <img src="{{ video.picture}}">
+    <div>{{ video.created_at}}</div>
+    <div>{{ video.video_file}}</div>
     <button class="login-margin-bottom" (click)="changeVideo(video.id)">Like</button>
-    </div>
+  </div>
     
 </div>
 <app-footer></app-footer>

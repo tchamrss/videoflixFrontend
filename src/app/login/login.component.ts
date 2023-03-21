@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ServerRequestService } from '../services/server-request.service';
 
@@ -10,7 +10,10 @@ import { ServerRequestService } from '../services/server-request.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  
+  // @ViewChild('emailField') emailField!: ElementRef; //To contact #emailField of the HTML-Code
+  // @ViewChild('passwordField') passwordField!: ElementRef; //To contact #passwordField of the HTML-Code
+
+
   email ='';
   password='';
   
@@ -20,7 +23,7 @@ export class LoginComponent implements OnInit {
   }
 
     loginUser() {
-      let loginData = {username: this.email, email: this.email, password: this.password};
+      let loginData = {email: this.email, username: '', password: this.password};
       console.log('POST-Request to Backend with Login Data: ',loginData);
 
       this.servReqService.loginUser(loginData).subscribe((data: {}) => {
@@ -36,6 +39,7 @@ export class LoginComponent implements OnInit {
   goToRegister(){
     this.router.navigateByUrl('/register'); 
   }
+
 
 
 

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://127.0.0.1:8000' //Variable zum Entwickeln
+  baseUrl: 'https://videoflix.russell-tchamba.de' //Variable zum Entwickeln
 };
 
 /*

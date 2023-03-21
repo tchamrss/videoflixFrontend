@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseUrl: 'http://api.ullrich-tobias.com' //Variable für Veröffentlichung
+  baseUrl: 'https://videoflix.russell-tchamba.de' //Variable für Veröffentlichung
 };

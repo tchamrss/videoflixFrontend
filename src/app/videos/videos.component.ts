@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment.prod';
 import { ServerRequestService } from '../services/server-request.service';
 
 @Component({
@@ -11,15 +12,8 @@ import { ServerRequestService } from '../services/server-request.service';
 export class VideosComponent implements OnInit {
   
 videos: any = [];
-id: number = 0;
-title: string = '';
-description: string = '';
-playtime: string = '';
-genres: string = '';
-likes: number = 0;
-picture: string = '';
-date: Date = new Date();
-videofile: string = '';
+APIurl: string = environment.baseUrl;
+
 
 
   constructor(private router: Router, private servReqService: ServerRequestService) { }
@@ -27,7 +21,7 @@ videofile: string = '';
   ngOnInit() {
    console.log('HIER');
    console.log('GET-Request to Backend for Videos');
-
+   console.log(this.APIurl);
    this.servReqService.getVideos().subscribe((data: {}) => {
     console.log(data);
     this.videos = data;

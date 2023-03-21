@@ -6,6 +6,6 @@ export interface Video {
     genres?: string; // Optional property
     likes: number;
     picture: string;
-    date: Date;
-    videofile: string;
+    created_at: Date;
+    video_file: string;
 }

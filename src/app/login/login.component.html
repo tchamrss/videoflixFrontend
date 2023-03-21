@@ -1,12 +1,11 @@
 <app-header></app-header>
 <div class="login-container">
-
+    <h1 class="login-header">Log In</h1>
     <form (ngSubmit)="loginUser()" class="login-form">
         <input class="login-margin-bottom" [(ngModel)]="email" name="email" type="text" placeholder="E-Mail">
-        <input class="login-margin-bottom" [(ngModel)]="password" name="password" type="text" placeholder="Password">
-        <button class="login-margin-bottom">Log in</button>
-        <button class="login-margin-bottom" (click)="goToRegister()">Register</button>
+        <input class="login-margin-bottom" [(ngModel)]="password" name="password" type="text" placeholder="Password" #passwordField>
+        <button class="button-79" role="button">Log In</button>
+        <div class="login-go-to-registration"><div class="login-new">New to Netflix?</div><a href="/register">Sign up now.</a></div>
     </form>
-
 </div>
 <app-footer></app-footer>

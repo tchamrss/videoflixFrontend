@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from  '@angular/common/http';
 import { Injectable } from  '@angular/core';
 import { lastValueFrom, Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.prod';
 import { User } from '../shared/user';
 import { Token } from '../shared/token';
 import { Video } from '../shared/video';
@@ -16,15 +16,22 @@ export class ServerRequestService {
 APIurl = environment.baseUrl;
 
 constructor(private https: HttpClient) { }
-
+  
+// Http Options
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+    }),
+  };
 
 // HttpClient Login User
-loginUser(user: any): Observable<User> {
+loginUser(user: User): Observable<User> {
+  console.log(user);
   return this.https
     .post<User>(
       this.APIurl + '/login/', //1.Param: URL
-      JSON.stringify(user) //2.Param: Body
-      //this.httpOptions //3.Param: If headers needed
+      JSON.stringify(user), //2.Param: Body
+      this.httpOptions //3.Param: If headers needed
     )
     .pipe(retry(1), catchError(this.handleError));
 }
