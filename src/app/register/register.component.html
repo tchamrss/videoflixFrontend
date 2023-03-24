@@ -1,21 +1,45 @@
 <app-header></app-header>
-<div class="register-container">
-    
-    <div class="register-text">
-    <h1>Unlimited movies, TV shows, and more.</h1>
-    <div>Watch anywhere. Cancel anytime.</div>
-    <div>Ready to watch? Enter your email to create or restart your membership.</div>
-    </div>
+<div class="login-center">
+<div class="login-container">
 
-    <form (ngSubmit)="registerUser()" class="register-form">
-    <input class="register-margin-bottom" [(ngModel)]="username" name="username" placeholder="username">
-    <input class="register-margin-bottom" [(ngModel)]="email" name="email" placeholder="email">
-    <input class="register-margin-bottom" [(ngModel)]="password" name="password" placeholder="password">
-    <input class="register-margin-bottom" [(ngModel)]="password2" name="password2" placeholder="password">
-    <button>Get Started</button>
+    <h1 class="login-header">Sign Up</h1>
+    <form (ngSubmit)="registerUser()" class="login-form">
+
+            <div id="error-message" class="error-message d-none">
+                Sorry, we can't find an account with this email address. Please try again or <a href="/register">create a new account.</a>
+            </div>
+
+            <div class="input-box">
+                <input class="login-margin-bottom" [(ngModel)]="username" id="username" name="username" type="text" required>
+                <label>Username</label>
+                <div id="input-notice-username" class="input-notice d-none">Your username must contain at least 4 characters.</div>
+            </div>
+
+            <div class="input-box">
+               <input class="login-margin-bottom" [(ngModel)]="email" id="email" name="email" type="text" required>
+               <label>E-Mail</label>
+               <div id="input-notice-email" class="input-notice d-none">Please enter a valid email.</div>
+            </div>
+            
+            <div class="input-box">
+                <input class="login-margin-bottom" [(ngModel)]="password" id="password2" name="password2" type="password" required>
+                <label>Password</label>
+                <div id="input-notice-password2" class="input-notice d-none">Your password must contain at least 4 characters.</div>
+            </div>
+
+            <div class="input-box">
+                <input class="login-margin-bottom" [(ngModel)]="password2" id="password" name="password" type="password" required>
+                <label>Password</label>
+                <div id="input-notice-password" class="input-notice d-none">Your password must contain at least 4 characters.</div>
+            </div>
+            
+        <button id="btn" class="button-79" role="button">Get Started <mat-spinner id="spinner" class="customize-mat-spinner d-none"></mat-spinner> </button>
+ 
     </form>
 </div>
+</div>
 <app-footer></app-footer>
+
 
 
 

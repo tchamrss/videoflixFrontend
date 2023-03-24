@@ -33,7 +33,7 @@ loginUser(user: User): Observable<User> {
       JSON.stringify(user), //2.Param: Body
       this.httpOptions //3.Param: If headers needed
     )
-    .pipe(retry(1), catchError(this.handleError));
+    .pipe(); //Pipe if neccessary
 }
 
 
@@ -87,7 +87,7 @@ updateVideo(video: any): Observable<Video> {
       // Get server-side error
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
-    window.alert(errorMessage);
+    
     return throwError(() => {
       return errorMessage;
     });

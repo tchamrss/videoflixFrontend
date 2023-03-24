@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { VideosComponent } from './videos/videos.component';
 import { LogoutComponent } from './logout/logout.component';
+import { ImpressumComponent } from './impressum/impressum.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent }, // { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'videos', component: VideosComponent },
   { path: 'logout', component: LogoutComponent },
+  { path: 'impressum', component: ImpressumComponent },
 ];
 
 @NgModule({
@@ -19,5 +21,6 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
 
 

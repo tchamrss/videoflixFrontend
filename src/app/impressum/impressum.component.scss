@@ -1,0 +1,77 @@
+:host {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.legalnotice-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+    border-radius:10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color:white;
+	margin-left: 75px;
+	margin-right: 75px;
+    margin-top:50px;
+    margin-bottom:50px;
+}
+
+.mobile-headline {
+	display: none;
+}
+
+.legalnotice-container h1 {
+	font-weight: 700;
+	font-size: 61px;
+	margin: 50px;
+}
+
+.subsection {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	margin-left: 50px;
+    margin-right:50px;
+	margin-bottom: 25px;
+}
+
+.subsection h2 {
+	font-weight: 700;
+	font-size: 27px;
+}
+
+.subsection span {
+	font-weight: 400;
+	font-size: 16px;
+}
+
+.backbutton {
+	display: flex;
+	position: absolute;
+	right: calc(31px / 2 + 60px + 2 * 15px);
+	top: calc(80px + 50px);
+	height: 24px;
+	width: 24.66px;
+	cursor: pointer;
+}
+
+
+@media (min-width: 520px) and (max-width: 700px) {
+	.legalnotice-container {
+        margin-left: 25px;
+        margin-right: 25px;
+    }
+}
+
+@media (min-width: 280px) and (max-width: 519px) {
+	.legalnotice-container {
+        margin-left: 0;
+        margin-right: 0;
+        width:100vw;
+    }
+
+}
+

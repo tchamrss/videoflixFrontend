@@ -13,6 +13,13 @@ import { LogoutComponent } from './logout/logout.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptorService } from './services/auth-interceptor.service';
+import { MatProgressSpinnerModule} from '@angular/material/progress-spinner'; //For Angular-Material-Spinner
+import { MatFormFieldModule } from '@angular/material/form-field'; //For Angular-Material-Form-Field
+import { MatSelectModule } from '@angular/material/select';
+import { ImpressumComponent } from './impressum/impressum.component'; //For Angular-Select-Field
+
+
+
 
 @NgModule({
   declarations: [
@@ -22,14 +29,18 @@ import { AuthInterceptorService } from './services/auth-interceptor.service';
     VideosComponent,
     LoginComponent,
     RegisterComponent,
-    LogoutComponent
+    LogoutComponent,
+    ImpressumComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatProgressSpinnerModule, //For Angular-Material-Spinner
+    MatFormFieldModule, //For Angular-Material-Form-Field
+    MatSelectModule, //For Angular-Select-Field
   ],
   providers: [
     {
