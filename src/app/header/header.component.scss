@@ -7,6 +7,10 @@
     align-items:center;
     justify-content: flex-start;
     height:10vh;
+
+    span{
+      cursor:pointer;
+    }
 }
 
 .header-videoflix {
@@ -27,6 +31,101 @@
   text-transform: uppercase;
   transform: skew(-20deg); /* anpassen wie gewünscht */
   color:red;
+}
+
+#menu{
+  // display:flex;
+  position:absolute;
+  right:10px;
+  top:10px;
+}
+
+.d-none{
+  display:none;
+}
+
+/* BUTTON */
+.button-79 {
+  backface-visibility: hidden;
+  background: red;
+  border: 0;
+  border-radius: .375rem;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  font-family: Circular,Helvetica,sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -.01em;
+  line-height: 1.3;
+  padding: 12px 1.25rem;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transform: translateZ(0) scale(1);
+  transition: transform .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin-top:15px;
+}
+
+.button-79:disabled {
+  color: #787878;
+  cursor: auto;
+}
+
+.button-79:not(:disabled):hover {
+  transform: scale(1.03);
+}
+
+.button-79:not(:disabled):hover:active {
+  transform: scale(1.03) translateY(.125rem);
+}
+
+.button-79:focus {
+  outline: 0 solid transparent;
+}
+
+.button-79:focus:before {
+  border-width: .125rem;
+  content: "";
+  left: calc(-1*.375rem);
+  pointer-events: none;
+  position: absolute;
+  top: calc(-1*.375rem);
+  transition: border-radius;
+  user-select: none;
+}
+
+.button-79:focus:not(:focus-visible) {
+  outline: 0 solid transparent;
+}
+
+.button-79:not(:disabled):active {
+  transform: translateY(.125rem);
+}
+
+.red-col{
+  color:red !important;
+}
+
+/* SPINNER */
+#spinner {
+  position:absolute;
+}
+
+::ng-deep mat-spinner svg, mat-spinner  {
+  height:30px !important;
+  width:30px !important;
+  color:white !important;
+}
+  
+::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+  stroke: white !important;
 }
 
 
