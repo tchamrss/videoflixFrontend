@@ -9,7 +9,7 @@
     <div>{{ video.likes}}</div>  -->
 
       <div class="video-title">{{ video.title}}</div>
-      <img src="https://videoflix.russell-tchamba.de{{ video.picture}}">
+      <img (click)="showVideo('{{video.video_file}}')" src="https://videoflix.russell-tchamba.de{{ video.picture}}">
 
     
     <!-- <div>{{ video.created_at}}</div>
@@ -17,5 +17,15 @@
     <!-- <button class="login-margin-bottom" (click)="changeVideo(video.id)">Like</button> -->
   </div>
     
+  <div id="video-container" class="video-container">
+    <div id="video-close" class="video-center">
+    <video width="320" height="240" controls>
+      <source id="vidsrc" src="https://videoflix.russell-tchamba.de/media/videos/dog_kSbzM7C.mp4" type="video/mp4">
+    </video>
+    <img  (click)="closeVideo()" class="video-close" src="../../assets/img/x-mark-24.png">
+    </div>
+  </div>
+
+
 </div>
 <app-footer></app-footer>

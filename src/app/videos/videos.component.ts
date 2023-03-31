@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment.prod';
 import { ServerRequestService } from '../services/server-request.service';
@@ -38,5 +38,27 @@ APIurl: string = environment.baseUrl;
     });
   }
 
+  closeVideo(){
+    (<HTMLInputElement>document.getElementById('video-container')).classList.add('d-none');
+
+  }
+
+  showVideo(videopath: string){
+    (<HTMLInputElement>document.getElementById('video-container')).classList.remove('d-none');
+    (<HTMLInputElement>document.getElementById('vidsrc')).setAttribute('src',`https://videoflix.russell-tchamba.de${videopath}`);
+    console.log(videopath);
+  }
+  
+  
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+
+    console.log(event.target);
+    let elementId: string = (event.target as Element).id;
+    if(elementId == 'video-close'){
+       this.closeVideo();
+    }
+    
+  }
 
 }
