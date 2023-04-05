@@ -8,15 +8,21 @@ import { Router } from '@angular/router';
 })
 export class FooterComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  actroute: string = '';
+
+  constructor(private router: Router) {
+      this.actroute = this.router.url;
+  }
 
   ngOnInit(): void {
   }
 
+  
+  /**
+   * Navigates to URL impressum
+   */
   goToImpressum(){
     this.router.navigateByUrl('/impressum'); 
   }
-
-
 
 }

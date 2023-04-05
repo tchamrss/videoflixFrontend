@@ -52,13 +52,11 @@ APIurl: string = environment.baseUrl;
   
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent) {
-
-    console.log(event.target);
     let elementId: string = (event.target as Element).id;
     if(elementId == 'video-close'){
+      console.log(event.target);
        this.closeVideo();
     }
-    
   }
 
 }

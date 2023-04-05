@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
         //console.log('POST-Request to Backend with Login Data: ',loginData);
         this.servReqService.loginUser(loginData).subscribe({
           next: (data: {}) => {
-            //console.log(data);
+            console.log(data);
             let response: any = data;
             localStorage.setItem('token', response['token']);
             //console.log('Token gespeichert: ', response['token']);
@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
             this.router.navigateByUrl('/videos');
           },
           error: (error: any) => {
-            //console.log('Fehler beim Einloggen:', error);
+            console.log('Fehler beim Einloggen:', error);
             //console.log('Fehler beim Einloggen:', error.status);
             this.showErrorMessage(error.statusText);
           }
@@ -52,17 +52,26 @@ export class LoginComponent implements OnInit {
     this.router.navigateByUrl('/register'); 
   }
 
+
+  /**
+   * Shows Spinner while loading
+   */
   showSpinner(){
     (<HTMLInputElement>document.getElementById('btn')).classList.add('red-col');
     (<HTMLInputElement>document.getElementById('spinner')).classList.remove('d-none');
     (<HTMLInputElement>document.getElementById('spinner')).classList.add('d-block'); 
   }
 
+
+  /**
+   * Hides Spinner after loading has finished
+   */
   hideSpinner(){
     (<HTMLInputElement>document.getElementById('btn')).classList.remove('red-col');
     (<HTMLInputElement>document.getElementById('spinner')).classList.add('d-none');
     (<HTMLInputElement>document.getElementById('spinner')).classList.remove('d-block'); 
   }
+
 
 
   showErrorMessage(errmessage: string){

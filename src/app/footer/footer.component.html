@@ -1,4 +1,7 @@
-<div class="footer-container">
+<div class="footer-container" *ngIf="actroute !== '/impressum'">
     <h1 (click)="goToImpressum()" class="footer-videoflix">Impressum &bull; Privacy</h1>
 </div>
 
+<div class="footer-container-alt" *ngIf="actroute == '/impressum'">
+    <h1 (click)="goToImpressum()" class="footer-videoflix">Impressum &bull; Privacy</h1>
+</div>

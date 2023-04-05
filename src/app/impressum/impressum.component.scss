@@ -5,8 +5,7 @@
 	justify-content: center;
 }
 
-
-.legalnotice-container {
+.impressum-container {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -23,7 +22,7 @@
 	display: none;
 }
 
-.legalnotice-container h1 {
+.impressum-container h1 {
 	font-weight: 700;
 	font-size: 61px;
 	margin: 50px;
@@ -64,14 +63,14 @@
 
 
 @media (min-width: 520px) and (max-width: 700px) {
-	.legalnotice-container {
+	.impressum-container {
         margin-left: 25px;
         margin-right: 25px;
     }
 }
 
 @media (min-width: 280px) and (max-width: 519px) {
-	.legalnotice-container {
+	.impressum-container {
         margin-left: 0;
         margin-right: 0;
         width:100vw;

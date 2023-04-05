@@ -49,13 +49,18 @@ export class RegisterComponent implements OnInit {
     this.hideSpinner();
   }
 
-
+/**
+ * Shows Spinner while loading
+ */
 showSpinner(){
   (<HTMLInputElement>document.getElementById('btn')).classList.add('red-col');
   (<HTMLInputElement>document.getElementById('spinner')).classList.remove('d-none');
   (<HTMLInputElement>document.getElementById('spinner')).classList.add('d-block'); 
 }
 
+/**
+ * Hides Spinner after loading has finished
+ */
 hideSpinner(){
   (<HTMLInputElement>document.getElementById('btn')).classList.remove('red-col');
   (<HTMLInputElement>document.getElementById('spinner')).classList.add('d-none');

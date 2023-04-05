@@ -20,6 +20,10 @@ export class HeaderComponent implements OnInit {
 
   }
 
+  
+  /**
+   * Logs out the user
+   */
   logoutUser(){
     this.showSpinner();
     console.log('POST-Request to Backend to logout'); 
@@ -35,24 +39,36 @@ export class HeaderComponent implements OnInit {
       this.router.navigateByUrl('/logout');
     },
     error: (error: any) => {
-      //console.log('Fehler beim Einloggen:', error);
-      //console.log('Fehler beim Einloggen:', error.status);
+      //console.log('Fehler beim Ausloggen:', error);
+      //console.log('Fehler beim Ausloggen:', error.status);
       //this.showErrorMessage(error.statusText);
     }
   });
   this.hideSpinner();
   }
 
+
+  /**
+   * Navigates to URL login
+   */
   goToLogin(){
     this.router.navigateByUrl('/login'); 
   }
 
+
+  /**
+   * Shows Spinner while loading
+   */
   showSpinner(){
     (<HTMLInputElement>document.getElementById('btn')).classList.add('red-col');
     (<HTMLInputElement>document.getElementById('spinner')).classList.remove('d-none');
     (<HTMLInputElement>document.getElementById('spinner')).classList.add('d-block'); 
   }
 
+
+  /**
+   * Hides Spinner after loading has finished
+   */
   hideSpinner(){
     (<HTMLInputElement>document.getElementById('btn')).classList.remove('red-col');
     (<HTMLInputElement>document.getElementById('spinner')).classList.add('d-none');

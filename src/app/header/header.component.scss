@@ -26,15 +26,14 @@
   left: 0;
   right: 0;
   margin-left:50px;
-  font-size: 48px; /* anpassen wie gewünscht */
-  font-weight: bold; /* anpassen wie gewünscht */
+  font-size: 48px; /* adapt to your needs */
+  font-weight: bold; /* adapt to your needs */
   text-transform: uppercase;
-  transform: skew(-20deg); /* anpassen wie gewünscht */
+  transform: skew(-20deg); /* adapt to your needs */
   color:red;
 }
 
 #menu{
-  // display:flex;
   position:absolute;
   right:10px;
   top:10px;
@@ -127,7 +126,6 @@
 ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
   stroke: white !important;
 }
-
 
 @media (min-width:280px) and (max-width:500px) {
   .header-container {
