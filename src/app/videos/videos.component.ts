@@ -8,13 +8,16 @@ import { ServerRequestService } from '../services/server-request.service';
   styleUrls: ['./videos.component.scss']
 })
 
+
 export class VideosComponent implements OnInit {
+  
   
 videos: any = [];
 
 
+  constructor(private router: Router, private servReqService: ServerRequestService) {
 
-  constructor(private router: Router, private servReqService: ServerRequestService) { }
+   }
 
   ngOnInit() {
    console.log('HIER');
@@ -39,10 +42,12 @@ videos: any = [];
     });
   }
 
+
   closeVideo(){
     (<HTMLInputElement>document.getElementById('video-container')).classList.add('d-none');
 
   }
+
 
   showVideo(videopath: string){
     (<HTMLInputElement>document.getElementById('video-container')).classList.remove('d-none');
