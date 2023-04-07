@@ -10,87 +10,106 @@ import { Video } from '../shared/video';
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class ServerRequestService {
 
-//Define API
+
+/**
+ * Defines the URL were the APIs can be accessed
+ */
 APIurl = environment.baseUrl;
 
+
+/**
+ * Http-Client gets injected
+ * @param https Http-Client
+ */
 constructor(private https: HttpClient) { }
-  
-// Http Options
+
+
+/**
+ * Defines the headers that are send with in each Http-Request
+ */
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
     }),
   };
 
-// HttpClient Login User
+
+/**
+ * Logs in the User with the data from the Login-Form
+ * @param user Interface 'User'
+ * @returns User-Observable
+ */
 loginUser(user: User): Observable<User> {
-  console.log(user);
   return this.https
     .post<User>(
-      this.APIurl + '/login/', //1.Param: URL
-      JSON.stringify(user), //2.Param: Body
-      this.httpOptions //3.Param: If headers needed
+      this.APIurl + '/login/', //1.Parameter: URL
+      JSON.stringify(user), //2.Parameter: Body
+      this.httpOptions //3.Parameter: If headers needed
     )
-    .pipe(); //Pipe if neccessary
+    .pipe(retry(1)); //Pipe if neccessary
 }
 
 
-// HttpClient Register User
+/**
+ * Registers the User with the data from the Register-Form
+ * @param user Interface 'User'
+ * @returns User-Observable
+ */
 registerUser(user: any): Observable<User> {
   return this.https
     .post<User>(
       this.APIurl + '/register/',
-      JSON.stringify(user)
-      //this.httpOptions
+      JSON.stringify(user),
+      this.httpOptions
     )
-    .pipe(retry(1), catchError(this.handleError));
+    .pipe(retry(1));
 }
 
-// HttpClient Logout User
+
+/**
+ * Logs out the User with sending the token from the Local-Storage
+ * @param token  Interface 'Token'
+ * @returns Token-Observable
+ */
 logoutUser(token: any): Observable<Token> {
   return this.https
     .post<Token>(
       this.APIurl + '/logout/',
-      JSON.stringify(token)
-      //this.httpOptions
+      JSON.stringify(token),
+      this.httpOptions
     )
-    .pipe(retry(1), catchError(this.handleError));
+    .pipe(retry(1));
 }
 
-// HttpClient Show Videos
+
+/**
+ * Fetches the Videos for the Video-Page
+ * @returns Video-Observable
+ */
 getVideos(): Observable<Video> {
   return this.https
     .get<Video>(this.APIurl + '/videos/')
-    .pipe(retry(1), catchError(this.handleError));
+    .pipe(retry(1));
 }
 
-// HttpClient API put() method => Update User
+
+/**
+ * Changes the attributes of a Video with a certain id
+ * @param video Interface 'Video'
+ * @returns Video-Observable
+ */
 updateVideo(video: any): Observable<Video> {
   return this.https
     .put<Video>(
       this.APIurl + '/videos/' + video.id,
-      JSON.stringify(video)
-      //this.httpOptions
+      JSON.stringify(video),
+      this.httpOptions
     )
-    .pipe(retry(1), catchError(this.handleError));
+    .pipe(retry(1));
 }
-
-  // Error handling
-  handleError(error: any) {
-    let errorMessage = '';
-    if (error.error instanceof ErrorEvent) {
-      // Get client-side error
-      errorMessage = error.error.message;
-    } else {
-      // Get server-side error
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
-    }
-    
-    return throwError(() => {
-      return errorMessage;
-    });
-  }
  
 }

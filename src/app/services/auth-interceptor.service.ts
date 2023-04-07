@@ -7,37 +7,45 @@ import { catchError, Observable, throwError } from 'rxjs';
   providedIn: 'root'
 })
 
-//Klasse 'AuthInterceptorService' erbt vom Interface 'HttpInterceptor'
+
+/**
+ * Class 'AuthInterceptorService' inherits from 'HttpInterceptor'
+ */
 export class AuthInterceptorService implements HttpInterceptor {  
 
+  
+/**
+ * Router gets injected
+ * @param router Router-Service
+ */
+constructor(private router: Router) {} 
 
-  constructor(private router: Router) {} 
 
- //1.Param: Request, 2.Param: Request wenn Response erfolgt , 3.Param: Response  
- intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {  
-    
-
-  // Wir klonen unseren Request und hängen das Token an
-   const token = localStorage.getItem('token'); //token aus dem LocalStorage holen
-
+ /**
+  * Each Http-Request gets attached with a token, before it is send to the Backend 
+  * @param request Http-Request
+  * @param next Http-Request-Handler which handles the response from the Backend
+  * @returns Http-Event which is the response from the Backend
+  */
+ intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {     
+   //If token is available the request gets cloned and the token fetched from Local-Storage is attached
+   const token = localStorage.getItem('token');
    if (token) {
      request = request.clone({
         setHeaders: {Authorization: `Token ${token}`}
      });
   }
-
-  console.log('Token vom Interceptor angehängt: ',localStorage.getItem('token'));
-  //Wir geben unseren Request in
+  //If the Handler gets an '401'-Error as Reponse from the Backend, then it redirects the User to Login-Page
   return next.handle(request).pipe(
   	catchError((err) => {
    	 if (err instanceof HttpErrorResponse) {
-       	 if (err.status === 401) { //With Error 401 we are not authorized to access the ressource
-         this.router.navigateByUrl('/login'); // Then redirect user to the login page
+       	 if (err.status === 401) { //Error 401: User is not authorized to access the ressource
+         this.router.navigateByUrl('/login'); //User gets redirected to the login page
      	}
  	 }
   	return throwError(() => err);
 	})
    )
-
   }
+
 }

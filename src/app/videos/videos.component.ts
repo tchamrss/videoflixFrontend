@@ -1,6 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { environment } from 'src/environments/environment.prod';
 import { ServerRequestService } from '../services/server-request.service';
 
 @Component({
@@ -12,7 +11,6 @@ import { ServerRequestService } from '../services/server-request.service';
 export class VideosComponent implements OnInit {
   
 videos: any = [];
-APIurl: string = environment.baseUrl;
 
 
 
@@ -21,9 +19,12 @@ APIurl: string = environment.baseUrl;
   ngOnInit() {
    console.log('HIER');
    console.log('GET-Request to Backend for Videos');
-   console.log(this.APIurl);
+   console.log(this.servReqService.APIurl);
    this.servReqService.getVideos().subscribe((data: {}) => {
+
+
     console.log(data);
+
     this.videos = data;
    });
 
@@ -45,7 +46,7 @@ APIurl: string = environment.baseUrl;
 
   showVideo(videopath: string){
     (<HTMLInputElement>document.getElementById('video-container')).classList.remove('d-none');
-    (<HTMLInputElement>document.getElementById('vidsrc')).setAttribute('src',`https://videoflix.russell-tchamba.de${videopath}`);
+    (<HTMLInputElement>document.getElementById('vidsrc')).setAttribute('src',`${this.servReqService.APIurl}${videopath}`);
     console.log(videopath);
   }
   

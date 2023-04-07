@@ -7,14 +7,27 @@ import { ServerRequestService } from '../services/server-request.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
+
+
 export class HeaderComponent implements OnInit {
   
-  token: any = '';
-  actroute: string = '';
 
+/**
+ * token-variable and variable for actual url-route
+ */
+token: any = '';
+actroute: string = '';
+
+
+/**
+ * Router & ServerRequestService get injected
+ * @param router Router-Service
+ * @param servReqService ServerRequestService
+ */
   constructor(private router: Router, private servReqService: ServerRequestService) {
-      this.actroute = this.router.url;
+      this.actroute = this.router.url; //Actual route is saved as soon as header is created to modify header when on Videos-Page
   }
+
 
   ngOnInit(): void {
 
@@ -22,29 +35,22 @@ export class HeaderComponent implements OnInit {
 
   
   /**
-   * Logs out the user
+   * Logs out the user: Token gets deleted and User gets redirected to Logout-Page
    */
   logoutUser(){
     this.showSpinner();
-    console.log('POST-Request to Backend to logout'); 
     this.token = localStorage.getItem('token');
 
    this.servReqService.logoutUser({'token': this.token}).subscribe({
     next: (data: {}) => {
-      console.log(data);
-      let response: any = data;
-      //console.log('Delete the Token of the User! ', response);
-      localStorage.removeItem('token');
-      //console.log('Go to Logout-Site');
-      this.router.navigateByUrl('/logout');
+      localStorage.removeItem('token'); //Token gets deleted
+      this.router.navigateByUrl('/logout'); //Redirect to Logout-Page
     },
     error: (error: any) => {
-      //console.log('Fehler beim Ausloggen:', error);
-      //console.log('Fehler beim Ausloggen:', error.status);
-      //this.showErrorMessage(error.statusText);
+      //console.log('Logout-Error: ', error,' Status: ',error.status,' StatusText: ',error.statusText);
     }
   });
-  this.hideSpinner();
+    this.hideSpinner();
   }
 
 
