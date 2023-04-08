@@ -26,9 +26,11 @@ videos: any = [];
    this.servReqService.getVideos().subscribe((data: {}) => {
 
 
-    console.log(data);
+    
 
     this.videos = data;
+    console.log(this.videos);
+    console.log(this.videos[0].id);
    });
 
   }
@@ -49,19 +51,26 @@ videos: any = [];
   }
 
 
-  showVideo(videopath: string){
+  showVideo(videoId: any){
+    console.log(this.videos[videoId].video_file);
     (<HTMLInputElement>document.getElementById('video-container')).classList.remove('d-none');
-    (<HTMLInputElement>document.getElementById('vidsrc')).setAttribute('src',`${this.servReqService.APIurl}${videopath}`);
-    console.log(videopath);
+    (<HTMLInputElement>document.getElementById('vidsrc')).setAttribute('src',`${this.servReqService.APIurl}${this.videos[videoId].video_file}`);
+    console.log(`${this.servReqService.APIurl}${this.videos[videoId].video_file}`);
   }
   
   
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent) {
     let elementId: string = (event.target as Element).id;
+    //To close the video-box
     if(elementId == 'video-close'){
       console.log(event.target);
        this.closeVideo();
+    }
+    //To show the correct video via its id
+    if(Number.isInteger(Number(elementId))){
+      console.log(event.target);
+       this.showVideo(Number(elementId));
     }
   }
 

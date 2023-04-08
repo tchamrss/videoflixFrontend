@@ -1,7 +1,7 @@
 <app-header></app-header>
 <div class="videos-container">
-    <p>videos works!</p>
-  <div *ngFor="let video of videos" id="{{ video.id }}" class="videos-box">
+
+  <div *ngFor="let video of videos" class="videos-box">
     
     <!-- <div>{{ video.description}}</div>
     <div>{{ video.playtime}}</div>
@@ -9,7 +9,7 @@
     <div>{{ video.likes}}</div>  -->
 
       <div class="video-title">{{ video.title}}</div>
-      <img (click)="showVideo('{{ video.video_file }}')" src="https://videoflix.russell-tchamba.de{{ video.picture}}">
+      <img id="{{ video.id }}" src="https://videoflix.russell-tchamba.de{{ video.picture}}">
 
     
     <!-- <div>{{ video.created_at}}</div>
