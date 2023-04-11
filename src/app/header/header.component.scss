@@ -20,7 +20,27 @@
   position: relative;
 }
 
+.header-videoflix2 {
+  display:flex;
+  height: 100%;
+  width:200px;
+  position: relative;
+}
+
 .header-videoflix span {
+  position: absolute;
+  top: calc(10vh / 2  - 10px);
+  left: 0;
+  right: 0;
+  margin-left:50px;
+  font-size: 48px; /* adapt to your needs */
+  font-weight: bold; /* adapt to your needs */
+  text-transform: uppercase;
+  transform: skew(-20deg); /* adapt to your needs */
+  color:red;
+}
+
+.header-videoflix2 span {
   position: absolute;
   top: calc(10vh / 2  - 10px);
   left: 0;
@@ -136,5 +156,19 @@
 }
 .header-videoflix span {
   margin-left:unset;
+}
+
+//For Video-Url 
+.header-videoflix2 {
+  width:244px;
+}
+.header-videoflix2 span {
+  margin-left:unset;
+  margin-top:55px;
+}
+#menu{
+  position:absolute;
+  right:unset;
+  top:0;
 }
 }

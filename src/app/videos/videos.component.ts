@@ -13,7 +13,7 @@ export class VideosComponent implements OnInit {
   
   
 videos: any = [];
-
+vidsrc: string = '';
 
   constructor(private router: Router, private servReqService: ServerRequestService) {
 
@@ -50,27 +50,33 @@ videos: any = [];
 
   }
 
-
   showVideo(videoId: any){
-    console.log(this.videos[videoId].video_file);
+    console.log('Hello');
     (<HTMLInputElement>document.getElementById('video-container')).classList.remove('d-none');
-    (<HTMLInputElement>document.getElementById('vidsrc')).setAttribute('src',`${this.servReqService.APIurl}${this.videos[videoId].video_file}`);
-    console.log(`${this.servReqService.APIurl}${this.videos[videoId].video_file}`);
+    this.vidsrc = `${this.servReqService.APIurl}${this.videos[videoId-1].video_file}`;
   }
-  
+
+  showInfoCard(videoId: any){
+
+  }
+
+
   
   @HostListener('document:click', ['$event'])
   onDocumentClick(event: MouseEvent) {
     let elementId: string = (event.target as Element).id;
+    
+    if(elementId != ''){ //To avoid Syntac-Error at Elements without ID
     //To close the video-box
-    if(elementId == 'video-close'){
-      console.log(event.target);
+    if(elementId == 'video-close' || elementId == 'video-close2'){
+      //console.log(event.target);
        this.closeVideo();
     }
-    //To show the correct video via its id
+    //To show the correct video inside the video-box
     if(Number.isInteger(Number(elementId))){
-      console.log(event.target);
+      //console.log(event.target);
        this.showVideo(Number(elementId));
+    };
     }
   }
 
