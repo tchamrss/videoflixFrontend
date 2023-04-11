@@ -10,8 +10,6 @@
     flex-wrap: wrap;
     background-color: yellow;
     margin: 20px;
-    // border: 4px solid red;
-
 }
 
 .videos-box {
@@ -40,8 +38,6 @@
 
 }
 
-
-
 .video-container {
     display: flex;
     position: absolute;
@@ -63,8 +59,8 @@
 
 .video-close {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 20px;
+    right: 0px;
     cursor: pointer;
 }
 
@@ -76,15 +72,15 @@
     display: flex;
 }
 
-
 .video-info-card {
-    position: absolute;
-    display: none;
-    background-color: green;
-    height: 200px;
-    width: 200px;
-    right: 0;
-    bottom: 0;
+        position: absolute;
+        background-color: green;
+        top: 0;
+        right: -10px;
+        left: -10px;
+        bottom: -80px;
+        border-radius: 10px;
+        z-index:2;
 }
 
 #actvid{

@@ -4,24 +4,19 @@
   <div *ngFor="let video of videos" class="videos-box">
     
     <div class="video-title">{{ video.title}}</div>
-    <img id="{{ video.id }}" src="https://videoflix.russell-tchamba.de{{ video.picture}}">
-
-    
-
+    <img id="{{ video.id }}" src="https://videoflix.russell-tchamba.de{{ video.picture }}" (mouseenter) ="showInfoCard($event)"  (mouseleave) ="hideInfoCard($event)">
 
     <!-- Info-Card of the Video on hover -->
-    <div id="video-info-card-{{ video.id }}" (hover)="showInfoCard('br')" class="video-info-card">
-
-    <!-- <div>{{ video.description}}</div>
-    <div>{{ video.playtime}}</div>
-    <div>{{ video.genres}}</div>
-    <div>{{ video.likes}}</div>  -->
-    <!-- <div>{{ video.created_at}}</div>
-    <div>{{ video.video_file}}</div> -->
-    <!-- <button class="login-margin-bottom" (click)="changeVideo(video.id)">Like</button> -->
-
+    <div id="video-info-card-{{ video.id }}" class="video-info-card d-none" (mouseenter) ="showInfoCard($event)"  (mouseleave) ="hideInfoCard($event)">
+      <div>{{ video.title}}</div>  
+      <img src="https://videoflix.russell-tchamba.de{{ video.picture }}">
+      <div>{{ video.description}}</div>
+      <div>{{ video.playtime}}</div>
+      <div>{{ video.genres}}</div>
+      <div>{{ video.likes}}</div> 
+      <div>{{ video.created_at}}</div>
+      <button class="login-margin-bottom" (click)="changeVideo(video.id)">Like</button>
     </div>
-
 
   </div>
     
