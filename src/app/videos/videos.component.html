@@ -14,8 +14,8 @@
         <div class="genr"><b>Genre:</b> {{ video.genres}}</div>
         <div class="plyt"><b>Playtime:</b> {{ video.playtime}}</div>
         <div class="video-info-card-iconbox">
-          <div class="video-info-card-circle"><img id="video-info-card-like-{{ video.id }}" class="video-info-card-icons like" src="../../assets/img/like-32.png"></div>
-          <div class="video-info-card-circle"><img id="video-info-card-play-{{ video.id }}" class="video-info-card-icons play" src="../../assets/img/play-32.png"></div>
+          <div class="video-info-card-circle"><img id="video-info-card-like-{{ video.id }}" class="video-info-card-icons like" src="~/../assets/img/like-32.png"></div>
+          <div class="video-info-card-circle"><img id="video-info-card-play-{{ video.id }}" class="video-info-card-icons play" src="~/../assets/img/play-32.png"></div>
         </div>
 
         <!-- <div>{{ video.title}}</div>   -->
@@ -34,7 +34,7 @@
   <div id="video-container" class="video-container d-none">
     <div id="video-close" class="video-center">
     <video id="actvid" controls [src]="vidsrc"></video>
-    <img  id="video-close2" class="video-close" src="../../assets/img/x-mark-24.png">
+    <img  id="video-close2" class="video-close" src="~/../assets/img/x-mark-24.png">
     </div>
   </div>
 
