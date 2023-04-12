@@ -42,7 +42,7 @@ export class RegisterComponent implements OnInit {
       this.servReqService.registerUser(registerData).subscribe({
         next: (data: {}) => {
           let response: any = data;
-          console.log(response.message);
+          console.log(response);
           this.emptyRegisterForm();
           this.showRegistrationSuccessfullMessage(response.message);
         },

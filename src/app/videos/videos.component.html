@@ -8,14 +8,21 @@
 
     <!-- Info-Card of the Video on hover -->
     <div id="video-info-card-{{ video.id }}" class="video-info-card d-none" (mouseenter) ="showInfoCard($event)"  (mouseleave) ="hideInfoCard($event)">
-      <div>{{ video.title}}</div>  
       <img src="https://videoflix.russell-tchamba.de{{ video.picture }}">
-      <div>{{ video.description}}</div>
-      <div>{{ video.playtime}}</div>
-      <div>{{ video.genres}}</div>
-      <div>{{ video.likes}}</div> 
-      <div>{{ video.created_at}}</div>
-      <button class="login-margin-bottom" (click)="changeVideo(video.id)">Like</button>
+      <div class="video-info-card-textbox">
+        <div class="desc"><b>Description:</b> {{ video.description}}</div>
+        <div class="genr"><b>Genre:</b> {{ video.genres}}</div>
+        <div class="plyt"><b>Playtime:</b> {{ video.playtime}}</div>
+        <div class="video-info-card-iconbox">
+          <div class="video-info-card-circle"><img id="video-info-card-like-{{ video.id }}" class="video-info-card-icons like" src="../../assets/img/like-32.png"></div>
+          <div class="video-info-card-circle"><img id="video-info-card-play-{{ video.id }}" class="video-info-card-icons play" src="../../assets/img/play-32.png"></div>
+        </div>
+
+        <!-- <div>{{ video.title}}</div>   -->
+        <!-- <div><b>Likes:</b> {{ video.likes}}</div> 
+        <div><b>Date:</b> {{ video.created_at}}</div>
+        <button class="login-margin-bottom" (click)="changeVideo(video.id)">Like</button> -->
+      </div>
     </div>
 
   </div>

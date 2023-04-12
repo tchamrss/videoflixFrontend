@@ -110,6 +110,12 @@ export class VideosComponent implements OnInit {
       //To show the correct video inside the video-box
       if (Number.isInteger(Number(elementId))) 
       {this.showVideo(Number(elementId))};
+      //To show the correct video inside the video-box
+      if ((event.target as Element).id.slice(0,21)=='video-info-card-play-') 
+      {this.showVideo(Number(elementId.slice(21,elementId.length)))};
+      //To show the correct likes
+      if ((event.target as Element).id.slice(0,21)=='video-info-card-like-') 
+      {console.log('Like for video with id ',Number(elementId.slice(21,elementId.length)))};
     }
   }
 

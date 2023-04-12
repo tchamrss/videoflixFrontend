@@ -8,15 +8,15 @@
     justify-content: center;
     align-items: flex-start;
     flex-wrap: wrap;
-    background-color: yellow;
     margin: 20px;
+    z-index:2;
 }
 
 .videos-box {
     position: relative;
     border-radius: 10px;
     background-color: black;
-    color: white;
+    color: black;
     margin: 5px;
     width: 280px;
     height: 150px;
@@ -46,7 +46,7 @@
     right: 0;
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.7);
-
+    z-Index:4;
 }
 
 .video-center {
@@ -59,8 +59,8 @@
 
 .video-close {
     position: absolute;
-    top: 20px;
-    right: 0px;
+    top: 34px;
+    right: 45px;
     cursor: pointer;
 }
 
@@ -72,22 +72,100 @@
     display: flex;
 }
 
-.video-info-card {
-        position: absolute;
-        background-color: green;
-        top: 0;
-        right: -10px;
-        left: -10px;
-        bottom: -80px;
-        border-radius: 10px;
-        z-index:2;
-}
-
 #actvid{
     width:1024px;
     height:576px;
     z-Index:1;
 }
+
+.video-info-card {
+    flex-direction:column;
+    position: absolute;
+    background-color: green;
+    top: 0;
+    right: -10px;
+    left: -10px;
+    bottom: -80px;
+    border-radius: 10px;
+    z-index:2;
+    animation: zoomIn 425ms ease-in-out; 
+    animation-fill-mode: forwards;
+
+    img {
+    display:flex;
+    position:unset;
+    border-top-left-radius:10px;
+    border-top-right-radius:10px;
+    border-bottom-left-radius:unset;
+    border-bottom-right-radius:unset;
+    }
+}
+
+.video-info-card-textbox{
+  background-color: grey;
+  border-bottom-left-radius:10px;
+  border-bottom-right-radius:10px;
+  padding-top:5px;
+  padding-left:10px;
+}
+
+.video-info-card-icons{
+    width:32px !important;
+    height:32px !important;
+}
+
+.like{
+    &:hover{
+        content: url("../../assets/img/like-32-red.png");
+    }
+}
+
+.play{
+    &:hover{
+        content: url("../../assets/img/play-32-red.png");
+    }
+}
+
+.video-info-card-iconbox{
+    display:flex;
+    justify-content:flex-end;
+}
+
+.video-info-card-circle{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-radius:100%;
+    margin:10px;
+    margin-top: unset !important;
+    width:40px;
+    height:40px;
+}
+
+.desc, .genr, .plyt{
+    margin-bottom:5px;
+}
+
+.desc{
+    margin-top:15px;
+}
+
+@keyframes zoomIn {
+    from
+    { 
+    transform:scale(0);
+    opacity:0;
+    }  
+    to 
+    {
+    transform:scale(1);
+    opacity:1;
+    }
+    }
+
+
+
+
 
 
 @media (min-width:501px) and (max-width:1024px) {
