@@ -5,7 +5,7 @@
     <form (ngSubmit)="loginUser()" class="login-form">
 
             <div id="error-message" class="error-message d-none">
-                Sorry, we can't find an account with this email address. Please try again or <a href="/register">create a new account.</a>
+                Sorry, we can't find an account with this email address. Please try again or <a (click)="goToRegister()">create a new account.</a>
             </div>
 
             <div class="input-box">
@@ -23,7 +23,7 @@
         <button id="btn" class="button-79" role="button">Log In <mat-spinner id="spinner" class="customize-mat-spinner d-none"></mat-spinner> </button>
  
 
-        <div class="login-go-to-registration"><div class="login-new">New to Netflix?</div><a href="/register">Sign up now.</a></div>
+        <div class="login-go-to-registration"><div class="login-new">New to Netflix?</div><a (click)="goToRegister()">Sign up now.</a></div>
     </form>
 </div>
 </div>

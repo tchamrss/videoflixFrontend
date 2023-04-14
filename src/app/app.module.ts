@@ -20,7 +20,6 @@ import { ImpressumComponent } from './impressum/impressum.component'; //For Angu
 
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +45,7 @@ import { ImpressumComponent } from './impressum/impressum.component'; //For Angu
     {
       provide: HTTP_INTERCEPTORS, //Wir nutzen den Interceptor
       useClass: AuthInterceptorService, //Aber wir überschreiben die Grundfunktion mit unserem Eigenen Service
-      multi: true
+      multi: true,
      }
   ],
   bootstrap: [AppComponent]
