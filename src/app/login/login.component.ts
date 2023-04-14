@@ -46,15 +46,10 @@ export class LoginComponent implements OnInit {
             this.router.navigateByUrl('/videos');
           },
           error: (error: any) => {
-            console.log('Login-Error: ', error,' Status: ',error.status,' StatusText: ',error.statusText);
-            this.showErrorMessage(error.statusText);
+            this.showErrorMessage(error['error'].error);
           }
         });
-      }
-      else
-      {
-        console.log('data not valid');
-      }
+      };
       this.hideSpinner();
     }
 

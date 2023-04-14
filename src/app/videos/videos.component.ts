@@ -11,37 +11,28 @@ import { ServerRequestService } from '../services/server-request.service';
 
 export class VideosComponent implements OnInit {
 
-
+/**
+ * videos-array with the video-data from the GET-Request and vidsrc-variable to change the video-source for the video-player
+ */
   videos: any = [];
   vidsrc: string = '';
 
-  
+
   constructor(private router: Router, private servReqService: ServerRequestService) {}
 
 
+  /**
+   * Fetches all videos from the backend with a GET-Request and saves them in the video-array
+   */
   ngOnInit() {
-    console.log('HIER');
-    console.log('GET-Request to Backend for Videos');
-    console.log(this.servReqService.APIurl);
-    this.servReqService.getVideos().subscribe((data: {}) => {
-
-
-
-
-      this.videos = data;
-      console.log(this.videos);
-      console.log(this.videos[0].id);
-    });
-
-  }
-
-
-  changeVideo(id: any) {
-    this.servReqService.updateVideo(id).subscribe((data: {}) => {
-      console.log(data);
-      let response: any = data;
-      console.log('Change successful! ', response);
-    });
+      this.servReqService.getVideos().subscribe({
+        next: (data: {}) => {
+          this.videos = data;
+        },
+        error: (error: any) => {
+          console.log(error['error'].error);
+        }
+      });
   }
 
 

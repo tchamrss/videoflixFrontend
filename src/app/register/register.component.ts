@@ -42,21 +42,15 @@ export class RegisterComponent implements OnInit {
       this.servReqService.registerUser(registerData).subscribe({
         next: (data: {}) => {
           let response: any = data;
-          console.log(response);
           this.emptyRegisterForm();
           this.showRegistrationSuccessfullMessage(response.message);
         },
         error: (error: any) => {
-          console.log('Register-Error: ', error,' Status: ',error.status,' StatusText: ',error.statusText);
-          this.showErrorMessage(error.statusText);
+          this.showErrorMessage(error['error'].error);
         }
       });
-    }
-    else
-    {
-      //Data is not valid
-    }
-      this.hideSpinner();
+    };
+    this.hideSpinner();
   }
 
 
