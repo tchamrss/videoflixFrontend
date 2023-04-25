@@ -34,3 +34,10 @@
  cursor: pointer;
  text-decoration: underline;
 }
+
+//Umbruch nach 20*2 px + 290*2 px = 620 px
+@media (min-width:280px) and (max-width:619px) {
+    .footer-container {
+        bottom:unset;
+    }
+}

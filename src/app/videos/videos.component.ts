@@ -12,11 +12,11 @@ import { ServerRequestService } from '../services/server-request.service';
 export class VideosComponent implements OnInit {
 
 /**
- * videos-array with the video-data from the GET-Request and vidsrc-variable to change the video-source for the video-player
+ * videos-array with the video-data from the GET-Request, vidsrc-variable to change the video-source for the video-player, actVidId which contains the Id of the opened video
  */
   videos: any = [];
   vidsrc: string = '';
-
+  actVidId: string = '';
 
   constructor(private router: Router, private servReqService: ServerRequestService) {}
 
@@ -41,16 +41,21 @@ export class VideosComponent implements OnInit {
  */
   closeVideo() {
     (<HTMLInputElement>document.getElementById('video-container')).classList.add('d-none');
+    (<HTMLInputElement>document.getElementById('res-480')).classList.add('bg-grey');
+    (<HTMLInputElement>document.getElementById('res-720')).classList.remove('bg-grey');
+    (<HTMLInputElement>document.getElementById('res-1080')).classList.remove('bg-grey');
   }
 
 
   /**
-   * Shows a video with the video-player
+   * Shows a video with the video-player and saves the videoId in the variable actVidId
    * @param videoId id of the video
    */
   showVideo(videoId: any) {
     (<HTMLInputElement>document.getElementById('video-container')).classList.remove('d-none');
-    this.vidsrc = `${this.servReqService.APIurl}${this.videos[videoId - 1].video_file}`;
+    this.actVidId = videoId;
+    let filteredVideo = this.videos.filter((video: { id: any }) => video.id == videoId);
+    this.vidsrc = `${this.servReqService.APIurl}${filteredVideo[0].video_file_480p}`;
   }
 
 
@@ -108,6 +113,33 @@ export class VideosComponent implements OnInit {
       if ((event.target as Element).id.slice(0,21)=='video-info-card-like-') 
       {console.log('Like for video with id ',Number(elementId.slice(21,elementId.length)))};
     }
+  }
+
+
+  /**
+   * Changes the resolution of the currently opened video to 480px, 720px or 1080px
+   * @param wishedResolution String that contains the resolution: 480, 720 or 1080
+   */
+  changeResolutionTo(wishedResolution:string){
+    let filteredVideo = this.videos.filter((video: { id: any }) => video.id == this.actVidId);
+    if (wishedResolution == '480'){
+      (<HTMLInputElement>document.getElementById('res-480')).classList.add('bg-grey');
+      (<HTMLInputElement>document.getElementById('res-720')).classList.remove('bg-grey');
+      (<HTMLInputElement>document.getElementById('res-1080')).classList.remove('bg-grey');
+      this.vidsrc = `${this.servReqService.APIurl}${filteredVideo[0].video_file_480p}`;
+    }
+    else if (wishedResolution == '720'){
+      (<HTMLInputElement>document.getElementById('res-480')).classList.remove('bg-grey');
+      (<HTMLInputElement>document.getElementById('res-720')).classList.add('bg-grey');
+      (<HTMLInputElement>document.getElementById('res-1080')).classList.remove('bg-grey');
+      this.vidsrc = `${this.servReqService.APIurl}${filteredVideo[0].video_file_720p}`;
+    }
+    else if (wishedResolution == '1080'){
+      (<HTMLInputElement>document.getElementById('res-480')).classList.remove('bg-grey');
+      (<HTMLInputElement>document.getElementById('res-720')).classList.remove('bg-grey');
+      (<HTMLInputElement>document.getElementById('res-1080')).classList.add('bg-grey');
+      this.vidsrc = `${this.servReqService.APIurl}${filteredVideo[0].video_file_1080p}`;
+    };
   }
 
 }

@@ -57,8 +57,8 @@ actroute: string = '';
   /**
    * Navigates to URL login
    */
-  goToLogin(){
-    this.router.navigateByUrl('/login'); 
+  goToVideoPage(){
+    this.router.navigateByUrl('/videos'); 
   }
 
 

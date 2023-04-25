@@ -58,13 +58,14 @@
 }
 
 a {
-    color: white;
-    text-decoration: none;
-    margin-left: 5px;
+  color: white;
+  text-decoration: none;
+  margin-left: 5px;
+  cursor:pointer;
 
-    &:hover {
-        text-decoration: underline;
-    }
+  &:hover {
+      text-decoration: underline;
+  }
 }
 
 .d-none{
@@ -248,8 +249,20 @@ label{
   .login-container {
     width: 100vw;
   }
+  
   .login-form{
     width:80vw;
+  }
+
+  .login-go-to-registration {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left:0;
+  }
+
+  .login-new{
+    margin-bottom:10px;
   }
 }
 

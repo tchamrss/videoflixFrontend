@@ -28,7 +28,17 @@
   <!-- Box where the Video is shown when clicked on the thumbnail -->
   <div id="video-container" class="video-container d-none">
     <div id="video-close" class="video-center">
-    <video id="actvid" controls [src]="vidsrc"></video>
+
+    <div class="video-container-for-res">
+      <video id="actvid" controls [src]="vidsrc"></video>
+      <div id="video-resolution">
+        <div><img src="~/../assets/img/arrow-16.png"></div>
+        <div id="res-1080" (click)="changeResolutionTo('1080')" class="video-res d-none">1080 px</div>
+        <div id="res-720" (click)="changeResolutionTo('720')" class="video-res d-none">720 px</div>
+        <div id="res-480" (click)="changeResolutionTo('480')" class="video-res d-none">480 px</div>
+      </div>
+    </div>  
+
     <img  id="video-close2" class="video-close" src="~/../assets/img/x-mark-24.png">
     </div>
   </div>
