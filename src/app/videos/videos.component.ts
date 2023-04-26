@@ -111,7 +111,17 @@ export class VideosComponent implements OnInit {
       {this.showVideo(Number(elementId.slice(21,elementId.length)))};
       //To show the correct likes
       if ((event.target as Element).id.slice(0,21)=='video-info-card-like-') 
-      {console.log('Like for video with id ',Number(elementId.slice(21,elementId.length)))};
+      {
+      
+      if((<HTMLInputElement>document.getElementById(elementId)).getAttribute('src') == '~/../assets/img/like-32.png'){
+        (<HTMLInputElement>document.getElementById(elementId)).setAttribute('src','~/../assets/img/like-32-red.png');
+        console.log('Like for video with id ',Number(elementId.slice(21,elementId.length)));
+      }
+      else{
+        (<HTMLInputElement>document.getElementById(elementId)).setAttribute('src','~/../assets/img/like-32.png');
+        console.log('De-Like for video with id ',Number(elementId.slice(21,elementId.length)));
+      };
+    };
     }
   }
 
