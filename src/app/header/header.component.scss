@@ -58,6 +58,11 @@
   right:10px;
   top:10px;
 }
+#menu_login{
+  position:absolute;
+  right:10px;
+  top:10px;
+}
 
 .d-none{
   display:none;
@@ -89,7 +94,7 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  margin-top:15px;
+  margin-top:32px;
 }
 
 .button-79:disabled {
@@ -156,6 +161,7 @@
 }
 .header-videoflix span {
   margin-left:unset;
+  top: calc(10vh  - 10px);
 }
 
 //For Video-Url 
@@ -167,6 +173,11 @@
   margin-top:55px;
 }
 #menu{
+  position:absolute;
+  right:unset;
+  top:0;
+}
+#menu_login{
   position:absolute;
   right:unset;
   top:0;

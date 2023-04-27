@@ -62,6 +62,13 @@ actroute: string = '';
   }
 
 
+    /**
+   * Navigates to URL login
+   */
+    goToLoginPage(){
+      this.router.navigateByUrl('/'); 
+    }
+
   /**
    * Shows Spinner while loading
    */

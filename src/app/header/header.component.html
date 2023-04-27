@@ -13,5 +13,8 @@
   <div id="menu" *ngIf="actroute == '/videos'">
     <button (click)="logoutUser()" id="btn" class="button-79" role="button">Logout<mat-spinner id="spinner" class="customize-mat-spinner d-none"></mat-spinner> </button>
   </div>
+  <div id="menu_login" *ngIf="actroute == '/logout'">
+    <button (click)="goToLoginPage()" id="btn" class="button-79" role="button">Zum Login<mat-spinner id="spinner" class="customize-mat-spinner d-none"></mat-spinner> </button>
+  </div>
 
 </div>
